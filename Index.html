@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Login</title>
-  </head>
-  <body>
-    <h2>Instagram Style Login</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Username" required><br><br>
-      <input type="password" id="password" placeholder="Password" required><br><br>
-      <button type="submit">Login</button>
-    </form>
+<head>
+  <meta charset="UTF-8">
+  <title>Login-test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #2a9d8f;
+    }
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login Form</h1>
+  <p>This is a sample login form converted from your Word document.</p>
 
-    <script>
-      document.getElementById("loginForm").addEventListener("submit", function(e){
-        e.preventDefault();
-        fetch("**YAHAN_APNA_URL_LAGAO**", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-          })
-        }).then(res => {
-          if(res.ok){
-            window.location.href = "welcome.html"; // Optional: Welcome page
-          }
-        });
-      });
-    </script>
-  </body>
+  <form action="#" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <input type="submit" value="Login">
+  </form>
+</body>
 </html>
