@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Page</title>
+  <title>Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #d4f7d4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
     form {
-      background: white;
-      padding: 30px;
+      padding: 20px;
+      border: 1px solid #ccc;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 0 10px #ccc;
     }
-    input {
+    input, button {
       display: block;
-      margin-bottom: 15px;
-      padding: 10px;
+      margin-bottom: 10px;
       width: 100%;
+      padding: 10px;
+      font-size: 16px;
     }
     button {
-      padding: 10px 15px;
       background-color: #4CAF50;
       color: white;
       border: none;
       cursor: pointer;
     }
     h2 {
-      margin-bottom: 20px;
       text-align: center;
     }
   </style>
@@ -39,28 +38,31 @@
 <body>
   <form name="submit-to-google-sheet">
     <h2>Login</h2>
-    <input type="text" name="username" placeholder="Username" required />
-    <input type="password" name="password" placeholder="Password" required />
+    <input type="text" name="username" placeholder="Enter username" required />
+    <input type="password" name="password" placeholder="Enter password" required />
     <button type="submit">Login</button>
     <p id="msg"></p>
   </form>
 
   <script>
-    const scriptURL = 'YOUR_SCRIPT_URL_HERE';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzk-i0dCZal1dvXe812VznvTsAEbHP0loHj2PczmO4YGmoaExHehfLvKgdNQaKnFJwZ/exec';
     const form = document.forms['submit-to-google-sheet'];
     const msg = document.getElementById("msg");
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          msg.innerHTML = "Logging in...";
-          setTimeout(function() {
-            msg.innerHTML = "";
-            window.location.href = "welcome.html";
-          }, 1500);
-        })
-        .catch(error => console.error('Error!', error.message));
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        msg.innerHTML = "Logging in...";
+        setTimeout(() => {
+          msg.innerHTML = "";
+          window.location.href = "welcome.html";
+        }, 1500);
+      })
+      .catch(error => console.error('Error!', error.message));
     });
   </script>
 </body>
